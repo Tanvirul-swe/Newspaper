@@ -1,3 +1,4 @@
+import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -11,67 +12,122 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _selectedIndex = 0;
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+
+  int _currentIndex = 0;
+  PageController? _pageController;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _pageController = PageController();
   }
+
+  @override
+  void dispose() {
+    _pageController!.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.purple,
+        backgroundColor: Color(0xFF140161),
         centerTitle: true,
-        title: const Text('All Newspaper'),
+        title: (_currentIndex == 0
+      ? const Text("National newspaper")
+            : (_currentIndex == 1 ? const Text('International newspaper') : const Text('Online newspaper'))),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-                icon: Icon(Icons.home,size: 30,),
-                title: Text('National'),
-                backgroundColor: Color(0xFF3DAFDB),
-
+      bottomNavigationBar: BottomNavyBar(
+        backgroundColor: Color(0xFF140161),
+        selectedIndex: _currentIndex,
+        onItemSelected: (index) {
+          setState(() => _currentIndex = index);
+          _pageController!.jumpToPage(index);
+        },
+        items: <BottomNavyBarItem>[
+          BottomNavyBarItem(
+            title: const Text(
+              'National',
+              style: TextStyle(
+                color: Colors.white,
+              ),
             ),
-            BottomNavigationBarItem(
-                icon: FaIcon(FontAwesomeIcons.globe),
-                title: Text('International'),
-                backgroundColor:Color(0xFF3DAFDB)
+            icon: Icon(
+              Icons.home,
             ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.favorite_border,size: 30,),
-              title: Text('Profile'),
-                backgroundColor: Color(0xFF3DAFDB)
-
-            ),
-          ],
-
+            inactiveColor: Colors.grey,
+            activeColor: Colors.white,
+          ),
+          BottomNavyBarItem(
+              title: const Text(
+                'International',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+              icon:
+                const FaIcon(FontAwesomeIcons.globe),
+              inactiveColor: Colors.grey,
+              activeColor: Colors.white),
+          BottomNavyBarItem(
+              title: const Text(
+                'Online',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+              icon: Icon(Icons.book_online_outlined),
+              inactiveColor: Colors.grey,
+              activeColor: Colors.white),
+          BottomNavyBarItem(
+              title: const Text(
+                'Favorite',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+              icon: Icon(Icons.favorite_outline_rounded),
+              inactiveColor: Colors.grey,
+              activeColor: Colors.white),
+        ],
           // type: BottomNavigationBarType.shifting,
-          currentIndex: _selectedIndex,
-          selectedItemColor: Colors.black,
-          iconSize: 40,
-          onTap: _onItemTapped,
-          elevation: 5
+
+
       ),
-      body: GridView.count(
-        padding: const EdgeInsets.all(8),
-        crossAxisCount: 2,
-        crossAxisSpacing: 4.0,
-        mainAxisSpacing: 4.0,
-        children: List.generate(choices.length, (index) {
-          return InkWell(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) =>  WebviewPage()),
+      body: PageView(
+        controller: _pageController,
+        onPageChanged: (index) {
+          setState(() => _currentIndex = index);
+        },
+        children: [
+          GridView.count(
+            padding: const EdgeInsets.all(8),
+            crossAxisCount: 2,
+            crossAxisSpacing: 4.0,
+            mainAxisSpacing: 4.0,
+            children: List.generate(choices.length, (index) {
+              return InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) =>  WebviewPage('prothom allo')),
+                  );
+                },
+                child: Center(
+                  child: SelectCard(choice: choices[index]),
+                ),
               );
-            },
-            child: Center(
-              child: SelectCard(choice: choices[index]),
-            ),
-          );
-        }),
-      ),
+            }),
+          ),
+          Container(),
+          Container(),
+          Container(
+            child: Text(papername),
+          ),
+        ],
+      )
     );
   }
 }
