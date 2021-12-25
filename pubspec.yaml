@@ -32,6 +32,7 @@ dependencies:
   webview_flutter: ^3.0.0
   font_awesome_flutter: ^9.2.0
   bottom_navy_bar: ^6.0.0
+  unity_ads_plugin: ^0.2.4
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -62,6 +63,9 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - Assets/
+    - Assets/International/
+    - Assets/TvChannel/
+    - Assets/InternationalTvChannel/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
