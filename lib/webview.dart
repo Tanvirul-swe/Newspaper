@@ -30,7 +30,7 @@ class _WebviewPageState extends State<WebviewPage> {
   void initState() {
     UnityAds.init(
       gameId: AdManager.gameId,
-      testMode: true,
+      testMode: false,
       listener: (state, args) => print('Init Listener: $state => $args'),
     );
     showAdds();

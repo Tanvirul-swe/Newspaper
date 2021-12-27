@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:newspaper/Service/UnityAdd.dart';
 import 'package:newspaper/constant/constant.dart';
+import 'package:newspaper/custom_drawer.dart';
 import 'package:newspaper/webview.dart';
 import 'package:unity_ads_plugin/unity_ads.dart';
 
@@ -24,16 +25,22 @@ class _HomePageState extends State<HomePage> {
     UnityAds.init(
       gameId: AdManager.gameId,
       testMode: true,
-      listener: (state, args) => print('Init Listener: $state => $args'),
+      listener: (state, args) {
+        print(args);
+        if(state==UnityAdState.complete || state==UnityAdState.complete){
+
+        }
+      }
     );
-        showAdds();
+      showAdds();
     _pageController = PageController();
   }
-    showAdds()async{
-     await UnityAds.showVideoAd(
+     showAdds()async{
+      await UnityAds.showVideoAd(
         placementId: AdManager.interstitialVideoAdPlacementId,
-        listener: (state, args) =>
-            print('Interstitial Video Listener: $state => $args'),
+        listener: (state, args) {
+
+        }
       );
     }
 
@@ -74,6 +81,7 @@ class _HomePageState extends State<HomePage> {
                   ? const Text('International newspaper'):_currentIndex==2?const Text('BD TV Channel')
                   : const Text('English TV Channel'))),
         ),
+        drawer: const CustomDrawer(),
         bottomNavigationBar: BottomNavyBar(
           backgroundColor: const Color(0xFF140161),
           selectedIndex: _currentIndex,
@@ -128,8 +136,6 @@ class _HomePageState extends State<HomePage> {
         ),
         body: Stack(
           children: [
-
-
             PageView(
               controller: _pageController,
               onPageChanged: (index) {
