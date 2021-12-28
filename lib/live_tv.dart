@@ -24,11 +24,11 @@ class BDLiveTV extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => WebviewPage(TvChannelUrl[index])),
+                    builder: (context) => WebviewPage(BDLiveTvChannel[index])),
               );
             },
             child: Center(
-              child: TvChannelCard(choiceTvChannel: tvchannel[index]),
+              child: TvChannelCard(choiceTvChannel: livetvchannel[index]),
             ),
           );
         }),

@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+
 class ChoiceNational {
   const ChoiceNational({required this.title});
   final String title;
@@ -34,6 +36,24 @@ const List<TvChannel> tvchannel = <TvChannel>[
   TvChannel(title: 'Assets/TvChannel/banglavison.jpg'),
   TvChannel(title: 'Assets/TvChannel/Jamuna.png'),
   TvChannel(title: 'Assets/TvChannel/independent.jpg'),
+  TvChannel(title: 'Assets/TvChannel/dash.jpeg'),
+  TvChannel(title: 'Assets/TvChannel/Channeli.png'),
+  TvChannel(title: 'Assets/TvChannel/channel24.png'),
+  TvChannel(title: 'Assets/TvChannel/atn.jpg'),
+  TvChannel(title: 'Assets/TvChannel/21.jpg'),
+  TvChannel(title: 'Assets/TvChannel/ekattor.jpg'),
+  TvChannel(title: 'Assets/TvChannel/channel9.png'),
+  TvChannel(title: 'Assets/TvChannel/mytv.png'),
+
+];
+const List<TvChannel> livetvchannel = <TvChannel>[
+  TvChannel(title: 'Assets/TvChannel/somaytv.png'),
+  TvChannel(title: 'Assets/TvChannel/gtv.png'),
+  TvChannel(title: 'Assets/TvChannel/rtv.png'),
+  TvChannel(title: 'Assets/TvChannel/ntv.jpg'),
+  TvChannel(title: 'Assets/TvChannel/banglavison.jpg'),
+  TvChannel(title: 'Assets/TvChannel/Jamuna.png'),
+  TvChannel(title: 'Assets/TvChannel/news24.jpg'),
   TvChannel(title: 'Assets/TvChannel/dash.jpeg'),
   TvChannel(title: 'Assets/TvChannel/Channeli.png'),
   TvChannel(title: 'Assets/TvChannel/channel24.png'),
@@ -130,4 +150,14 @@ List <String> TvChannelUrl=[
   'https://www.ekattor.tv',
   'https://www.channelninebd.tv',
   'https://www.mytvbd.tv'
+];
+List<String> BDLiveTvChannel=[
+  'https://www.bioscopelive.com/en/channel/somoy-tv',
+  'https://www.youtube.com/watch?v=vSHelsYpvkc&ab_channel=GTV',
+  'https://www.youtube.com/watch?v=NhQVppCRTtw&ab_channel=RtvLive',
+  'https://www.youtube.com/watch?v=zEeoYfcrmX0&ab_channel=NTVLive',
+  'https://www.youtube.com/watch?v=5ZtUvFKK_2I&ab_channel=BanglaVisionLIVE',
+  'https://www.youtube.com/watch?v=GAGhH4cK7gY&ab_channel=JamunaTV',
+  'https://www.youtube.com/watch?v=ug1l9TR-VwM&ab_channel=NEWS24',
+  'https://www.youtube.com/watch?v=YpkEszYJtq4&ab_channel=Channel24',
 ];
