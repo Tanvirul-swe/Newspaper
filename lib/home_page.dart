@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     UnityAds.init(
       gameId: AdManager.gameId,
-      testMode: true,
+      testMode: false,
       listener: (state, args) {
         print(args);
         if(state==UnityAdState.complete || state==UnityAdState.complete){
