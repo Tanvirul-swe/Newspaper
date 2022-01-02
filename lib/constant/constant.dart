@@ -79,6 +79,7 @@ const List <EnglishTvChannel> englishtvchannel=[
   EnglishTvChannel(title: 'Assets/InternationalTvChannel/ndd.png'),
   EnglishTvChannel(title: 'Assets/InternationalTvChannel/news.png'),
   EnglishTvChannel(title: 'Assets/InternationalTvChannel/sky.png'),
+  EnglishTvChannel(title: 'Assets/InternationalTvChannel/abcnews.jpeg'),
 ];
 
 const List <String> englishtvchannelurl=[

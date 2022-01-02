@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:newspaper/international_live_tv.dart';
 import 'package:newspaper/live_tv.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -29,15 +30,21 @@ class CustomDrawer extends StatelessWidget {
                 );
               },
               leading: Image.asset(
-                'Assets/live.png',
+                'Assets/InternationalTvChannel/live.gif',
                 width: 25,
                 height: 25,
               ),
               title: const Text('BD Live TV'),
             ),
             ListTile(
+              onTap: (){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const InternationalLiveTv()),
+                );
+              },
               leading: Image.asset(
-                'Assets/live.png',
+                'Assets/InternationalTvChannel/live.gif',
                 width: 25,
                 height: 25,
               ),
