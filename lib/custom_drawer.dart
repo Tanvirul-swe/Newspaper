@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:newspaper/OnlineNewspaper/online_newspaper.dart';
+import 'package:newspaper/constant/constant.dart';
 import 'package:newspaper/international_live_tv.dart';
+import 'package:newspaper/jobsnews.dart';
 import 'package:newspaper/live_tv.dart';
+import 'package:share/share.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({Key? key}) : super(key: key);
@@ -31,8 +35,8 @@ class CustomDrawer extends StatelessWidget {
               },
               leading: Image.asset(
                 'Assets/InternationalTvChannel/live.gif',
-                width: 25,
-                height: 25,
+                width: 30,
+                height: 30,
               ),
               title: const Text('BD Live TV'),
             ),
@@ -45,22 +49,35 @@ class CustomDrawer extends StatelessWidget {
               },
               leading: Image.asset(
                 'Assets/InternationalTvChannel/live.gif',
-                width: 25,
-                height: 25,
+                width: 30,
+                height: 30,
               ),
               title: const Text('International Live TV'),
             ),
             ListTile(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>const OnlinePaper()));
+              },
               leading: Image.asset(
                 'Assets/newspaper.png',
-                width: 25,
-                height: 25,
+                width: 30,
+                height: 30,
               ),
               title: const Text('Online Newspaper'),
             ),
-            const ListTile(
-              leading: FaIcon(FontAwesomeIcons.shareAltSquare),
-              title: Text('Share'),
+            ListTile(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>const JobsNews()));
+              },
+              leading: Image.asset('Assets/Jobs/jobs.png',width: 30,height: 30,),
+              title: const Text('Job News'),
+            ),
+             ListTile(
+              onTap: (){
+               Share.share(star);
+              },
+              leading: const FaIcon(FontAwesomeIcons.shareAltSquare,size: 30,),
+              title: const Text('Share'),
             ),
           ],
         ),

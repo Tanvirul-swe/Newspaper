@@ -81,7 +81,56 @@ const List <EnglishTvChannel> englishtvchannel=[
   EnglishTvChannel(title: 'Assets/InternationalTvChannel/sky.png'),
   EnglishTvChannel(title: 'Assets/InternationalTvChannel/abcnews.jpeg'),
 ];
+class OnlineNewspaper{
+  const OnlineNewspaper({required this.title});
+  final String title;
+}
+const List <OnlineNewspaper> onlinepaper=<OnlineNewspaper>[
+  OnlineNewspaper(title: 'Assets/OnlineNewspaper/banglanews.png'),
+  OnlineNewspaper(title: 'Assets/OnlineNewspaper/banglatribune.png'),
+  OnlineNewspaper(title: 'Assets/OnlineNewspaper/bdnews24.png'),
+  OnlineNewspaper(title: 'Assets/OnlineNewspaper/bss.png'),
+  OnlineNewspaper(title: 'Assets/OnlineNewspaper/dhakapost.jpg'),
+  OnlineNewspaper(title: 'Assets/OnlineNewspaper/dmp.jpg'),
+  OnlineNewspaper(title: 'Assets/OnlineNewspaper/jagonews24.jpg'),
+  OnlineNewspaper(title: 'Assets/OnlineNewspaper/oporajoybangla.png'),
+  OnlineNewspaper(title: 'Assets/OnlineNewspaper/poriborton.png'),
+  OnlineNewspaper(title: 'Assets/OnlineNewspaper/risingbd.png'),
 
+];
+
+class Jobsnewspaper{
+  const Jobsnewspaper({required this.title});
+  final String title;
+}
+const List <Jobsnewspaper> jobsnews=<Jobsnewspaper>[
+  Jobsnewspaper(title: 'Assets/Jobs/chakrirdak.jpg'),
+  Jobsnewspaper(title: 'Assets/Jobs/saptahikchakri.jpg'),
+  Jobsnewspaper(title: 'Assets/Jobs/bdjobsedu.jpg'),
+
+
+  Jobsnewspaper(title: 'Assets/Jobs/bdeducation.png'),
+  Jobsnewspaper(title: 'Assets/Jobs/bdjobscarear.jpg'),
+  Jobsnewspaper(title: 'Assets/Jobs/youthcarnival.png'),
+  Jobsnewspaper(title: 'Assets/Jobs/chakrirkhabor.jpg'),
+  Jobsnewspaper(title: 'Assets/Jobs/sharajobs.png'),
+  Jobsnewspaper(title: 'Assets/Jobs/chakrikhujun.png'),
+  Jobsnewspaper(title: 'Assets/Jobs/banglacyber.png'),
+];
+
+  const List<String> jobslink =[
+      'https://chakrirdak.xyz',
+      'https://saptahikchakrirkhobor.com',
+    'https://www.bdjobsedu.com',
+    'https://bdeducationinfo.com',
+    'https://www.bdjobscareers.com',
+    'https://youthcarnival.org/bn',
+    'https://chakrirkhobor.com.bd',
+    'https://www.sherajobs.com',
+    'https://chakrikujun.com',
+    'https://www.banglacyber.com'
+
+  ];
 const List <String> englishtvchannelurl=[
   'https://www.aljazeera.com',
   'https://www.bbc.com',
@@ -161,4 +210,16 @@ List<String> BDLiveTvChannel=[
   'https://www.youtube.com/watch?v=GAGhH4cK7gY&ab_channel=JamunaTV',
   'https://www.youtube.com/watch?v=ug1l9TR-VwM&ab_channel=NEWS24',
   'https://www.youtube.com/watch?v=YpkEszYJtq4&ab_channel=Channel24',
+];
+List<String> onlinenews=[
+    'https://www.banglanews24.com',
+     'https://www.banglatribune.com',
+  'https://bdnews24.com',
+  'https://www.bssnews.net',
+  'https://www.dhakapost.com',
+  'https://dmpnews.org',
+  'https://www.jagonews24.com',
+  'https://www.aparajeobangla.com',
+  'http://www.poriborton.news',
+  'https://www.risingbd.com',
 ];

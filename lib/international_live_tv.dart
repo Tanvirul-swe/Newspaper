@@ -35,9 +35,7 @@ class _InternationalLiveTvState extends State<InternationalLiveTv> {
       appBar: AppBar(
         backgroundColor: const Color(0xFF140161),
         title: const Text('International Live Tv'),
-        actions: [
-          Image.asset('Assets/InternationalTvChannel/live.gif',width: 30,),
-        ],
+
       ),
       body: FutureBuilder<DocumentSnapshot>(
         future: users.doc('url').get(),

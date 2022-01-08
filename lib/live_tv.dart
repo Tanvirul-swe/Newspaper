@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:newspaper/constant/constant.dart';
 import 'package:newspaper/home_page.dart';
 import 'package:newspaper/webview.dart';
-
+String star='';
 class BDLiveTV extends StatefulWidget {
   const BDLiveTV({Key? key}) : super(key: key);
 
@@ -56,6 +56,7 @@ class _BDLiveTVState extends State<BDLiveTV> {
           if (snapshot.connectionState == ConnectionState.done) {
             Map<String, dynamic> data =
                 snapshot.data!.data() as Map<String, dynamic>;
+             star = data['app_link'];
             return  GridView.count(
                 padding: const EdgeInsets.all(8),
                 crossAxisCount: 2,

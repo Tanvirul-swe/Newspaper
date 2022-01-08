@@ -311,3 +311,39 @@ class EnglishTv extends StatelessWidget {
     );
   }
 }
+
+class Onlinenews extends StatelessWidget {
+  const Onlinenews({Key? key, required this.onlineNewspaper}) : super(key: key);
+  final OnlineNewspaper onlineNewspaper;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      color: Colors.orange,
+      child: Container(
+        child: Image.asset(onlineNewspaper.title),
+        height: 180,
+        width: 180,
+        color: Colors.white,
+      ),
+    );
+  }
+}
+
+class Jobsnews extends StatelessWidget {
+  const Jobsnews({Key? key, required this.jobs}) : super(key: key);
+  final Jobsnewspaper jobs;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      color: Colors.orange,
+      child: Container(
+        child: Image.asset(jobs.title),
+        height: 180,
+        width: 180,
+        color: Colors.white,
+      ),
+    );
+  }
+}
