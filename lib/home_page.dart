@@ -22,24 +22,33 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    UnityAds.init(
-      gameId: AdManager.gameId,
-      testMode: false,
-      listener: (state, args) {
-        print(args);
-        if(state==UnityAdState.complete || state==UnityAdState.complete){
+    inititaload();
 
-        }
-      }
-    );
-      showAdds();
     _pageController = PageController();
   }
-     showAdds()async{
+
+  void inititaload()async{
+    await UnityAds.init(
+        gameId: AdManager.gameId,
+        testMode: false,
+        listener: (state, args) {
+          if(state==UnityAdState.ready){
+            showAdds();
+          }
+          else{
+            inititaload();
+          }
+        }
+    );
+  }
+
+   void showAdds()async{
       await UnityAds.showVideoAd(
         placementId: AdManager.interstitialVideoAdPlacementId,
         listener: (state, args) {
-
+          if(state==UnityAdState.complete||state==UnityAdState.skipped){
+            inititaload();
+          }
         }
       );
     }

@@ -25,23 +25,35 @@ class _WebviewPageState extends State<WebviewPage> {
   bool addfavorite = false;
   int checkclick = 1;
   bool isLoading = true;
-
   @override
   void initState() {
-    UnityAds.init(
-      gameId: AdManager.gameId,
-      testMode: false,
-      listener: (state, args) => print('Init Listener: $state => $args'),
-    );
-    showAdds();
     super.initState();
+    inititaload();
   }
 
-  showAdds() async {
+  void inititaload()async{
+    await UnityAds.init(
+        gameId: AdManager.gameId,
+        testMode: false,
+        listener: (state, args) {
+          if(state==UnityAdState.ready){
+            showAdds();
+          }
+          else{
+            inititaload();
+          }
+        }
+    );
+  }
+
+  void showAdds()async{
     await UnityAds.showVideoAd(
-      placementId: AdManager.interstitialVideoAdPlacementId,
-      listener: (state, args) =>
-          print('Interstitial Video Listener: $state => $args'),
+        placementId: AdManager.interstitialVideoAdPlacementId,
+        listener: (state, args) {
+          if(state==UnityAdState.complete||state==UnityAdState.skipped){
+            inititaload();
+          }
+        }
     );
   }
 
@@ -98,6 +110,9 @@ class _WebviewPageState extends State<WebviewPage> {
            child: UnityBannerAd(
              placementId: AdManager.bannerAdPlacementId,
              listener: (state, args) {
+               if(state==UnityAdState.error){
+                 inititaload();
+               }
                print('Banner Listener: $state => $args');
              },
            ),
