@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:newspaper/Service/UnityAdd.dart';
-import 'package:unity_ads_plugin/unity_ads.dart';
+import 'package:unity_ads_plugin/unity_ads_plugin.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 String papername = 'ff';
@@ -25,6 +25,7 @@ class _WebviewPageState extends State<WebviewPage> {
   bool addfavorite = false;
   int checkclick = 1;
   bool isLoading = true;
+
   @override
   void initState() {
     super.initState();
@@ -32,27 +33,37 @@ class _WebviewPageState extends State<WebviewPage> {
   }
 
   void inititaload()async{
-    await UnityAds.init(
+    UnityAds.init(
         gameId: AdManager.gameId,
         testMode: false,
-        listener: (state, args) {
-          if(state==UnityAdState.ready){
-            showAdds();
-          }
-          else{
-            inititaload();
-          }
+        onComplete: (){
+          showAdds();
+        },
+        onFailed: (error, message){
+          inititaload();
         }
     );
   }
 
   void showAdds()async{
-    await UnityAds.showVideoAd(
+    UnityAds.showVideoAd(
         placementId: AdManager.interstitialVideoAdPlacementId,
-        listener: (state, args) {
-          if(state==UnityAdState.complete||state==UnityAdState.skipped){
-            inititaload();
-          }
+        onComplete: (placementId){
+          inititaload();
+        },
+
+        onFailed: (placementId, error, message) {
+          inititaload();
+        },
+
+        onStart: (placementId) {
+          inititaload();
+        },
+        onClick: (placementId) {
+          inititaload();
+        },
+        onSkipped: (placementId) {
+          inititaload();
         }
     );
   }
@@ -64,28 +75,7 @@ class _WebviewPageState extends State<WebviewPage> {
         backgroundColor: const Color(0xFF140161),
         title: const Text('Read'),
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   backgroundColor: const Color(0xFF140161),
-      //   onPressed: () {
-      //     setState(() {
-      //       checkclick++;
-      //       if (checkclick % 2 == 0) {
-      //         setState(() {
-      //           addfavorite = true;
-      //           papername = widget.paper.toString();
-      //         });
-      //       } else {
-      //         papername = '';
-      //         setState(() {
-      //           addfavorite = false;
-      //         });
-      //       }
-      //     });
-      //   },
-      //   child: addfavorite == false
-      //       ? const Icon(Icons.favorite_outline_rounded)
-      //       : const Icon(Icons.favorite_outlined),
-      // ),
+
       body: Stack(
         children: <Widget>[
           WebView(
@@ -105,18 +95,6 @@ class _WebviewPageState extends State<WebviewPage> {
                 )
               : Stack(
           ),
-         Align(
-           alignment: Alignment.bottomCenter,
-           child: UnityBannerAd(
-             placementId: AdManager.bannerAdPlacementId,
-             listener: (state, args) {
-               if(state==UnityAdState.error){
-                 inititaload();
-               }
-               print('Banner Listener: $state => $args');
-             },
-           ),
-         )
         ],
       ),
     );

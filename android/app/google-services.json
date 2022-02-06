@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "448005275596",
-    "project_id": "newspaper-b3b2c",
-    "storage_bucket": "newspaper-b3b2c.appspot.com"
+    "project_number": "353484821510",
+    "project_id": "banglanews-9b0a7",
+    "storage_bucket": "banglanews-9b0a7.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:448005275596:android:5ecd8315a8ce7508176769",
+        "mobilesdk_app_id": "1:353484821510:android:1dd7fddcbfdd5b76b61f87",
         "android_client_info": {
-          "package_name": "com.example.newspaper"
+          "package_name": "com.news.bangla.newspaper"
         }
       },
       "oauth_client": [
         {
-          "client_id": "448005275596-9k83s7q1o50734i8ji42213i1nedbd10.apps.googleusercontent.com",
+          "client_id": "353484821510-uu8diltbvu1n7jmrc1gcngmbkhlpc0a3.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDD6m-kjsmvlwKcrJBPelKWrzqNKWzxGS8"
+          "current_key": "AIzaSyB2zMGKsSjvmygzEDwy0z5ggJy7eOiix_g"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "448005275596-9k83s7q1o50734i8ji42213i1nedbd10.apps.googleusercontent.com",
+              "client_id": "353484821510-uu8diltbvu1n7jmrc1gcngmbkhlpc0a3.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -46,7 +46,7 @@ class _BDLiveTVState extends State<BDLiveTV> {
         builder:
             (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
           if (snapshot.hasError) {
-            return const Text("Something went wrong");
+            return  Text('Something want wrrong');
           }
 
           if (snapshot.hasData && !snapshot.data!.exists) {

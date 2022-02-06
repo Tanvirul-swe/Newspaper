@@ -6,7 +6,7 @@ import 'package:newspaper/Service/UnityAdd.dart';
 import 'package:newspaper/constant/constant.dart';
 import 'package:newspaper/custom_drawer.dart';
 import 'package:newspaper/webview.dart';
-import 'package:unity_ads_plugin/unity_ads.dart';
+import 'package:unity_ads_plugin/unity_ads_plugin.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -28,29 +28,39 @@ class _HomePageState extends State<HomePage> {
   }
 
   void inititaload()async{
-    await UnityAds.init(
-        gameId: AdManager.gameId,
-        testMode: false,
-        listener: (state, args) {
-          if(state==UnityAdState.ready){
-            showAdds();
-          }
-          else{
-            inititaload();
-          }
-        }
+    UnityAds.init(
+      gameId: AdManager.gameId,
+      testMode: false,
+      onComplete: (){
+        showAdds();
+      },
+      onFailed: (error, message){
+        inititaload();
+      }
     );
   }
 
    void showAdds()async{
-      await UnityAds.showVideoAd(
-        placementId: AdManager.interstitialVideoAdPlacementId,
-        listener: (state, args) {
-          if(state==UnityAdState.complete||state==UnityAdState.skipped){
-            inititaload();
-          }
-        }
-      );
+     UnityAds.showVideoAd(
+       placementId: AdManager.interstitialVideoAdPlacementId,
+       onComplete: (placementId){
+         inititaload();
+       },
+
+       onFailed: (placementId, error, message) {
+         inititaload();
+       },
+
+       onStart: (placementId) {
+         inititaload();
+       },
+       onClick: (placementId) {
+         inititaload();
+       },
+       onSkipped: (placementId) {
+         inititaload();
+       }
+     );
     }
 
   @override
@@ -234,15 +244,15 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
 
-            Align(
-              alignment: Alignment.topCenter,
-              child: UnityBannerAd(
-                placementId: AdManager.bannerAdPlacementId,
-                listener: (state, args) {
-                  print('Banner Listener: $state => $args');
-                },
-              ),
-            ),
+            // Align(
+            //   alignment: Alignment.topCenter,
+            //   child: UnityBannerAd(
+            //     placementId: AdManager.bannerAdPlacementId,
+            //     listener: (state, args) {
+            //       print('Banner Listener: $state => $args');
+            //     },
+            //   ),
+            // ),
           ],
 
         ));
